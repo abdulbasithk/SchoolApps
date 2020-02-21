@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include('../partials/boostrap-css') %> 
+    <title>EDIT SUBJECT</title>
+</head>
+<body>
+    <%- include('../partials/nav', { page: 'subjects'}) %>
+    <% if (error.length > 0) { %>
+        <% for( let i = 0; i < error.length; i++ ) { %>
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+              <strong> <%= error[i] %> </strong>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+        <% } %>
+      <% } %> 
+    <form method="POST" action="/subjects/edit/<%= data.id %> ">
+        <div class="form-group">
+            <label for="subject_name">Subject Name</label>
+            <input type="text" class="form-control" id="subject_name" aria-describedby="emailHelp" name="subject_name" value="<%= data.subject_name %>">
+        </div>
+        <div class="form-group form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1" required>
+            <label class="form-check-label" for="exampleCheck1">Im sure the data now is correct</label>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    <%- include('../partials/boostrap-js') %> 
+</body>
+</html>

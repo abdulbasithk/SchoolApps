@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include('../partials/boostrap-css') %> 
+    <title>TEACHER</title>
+</head>
+<body>
+    <%- include('../partials/nav', {page: 'teachers'}) %>
+    <% if (msg) { %>
+      <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>SUCCESS!</strong> <%= msg %> .
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    <% } %>
+    <table class="table">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">id</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Gender</th>
+            <th scope="col">Options</th>
+          </tr>
+        </thead>
+        <tbody>
+              <% for( let i = 0; i < data.length; i++ ) { %>
+            <tr>
+                <td><%= data[i].id %> </td>
+                <td><%= data[i].first_name %> </td>
+                <td><%= data[i].last_name %> </td>
+                <td><%= data[i].email %> </td>
+                <td><%= data[i].gender %> </td>
+                <td><a href="/teachers/edit/<%= data[i].id %> "><i class="fas fa-edit" style="font-size: 25px;"></i></a>&emsp13;&emsp13;&emsp13;<a href="/teachers/delete/<%= data[i].id %> "><i class="fas fa-trash-alt" style="font-size: 25px;"></i></a></td>
+            </tr>
+                <% } %>
+        </tbody>
+    <%- include('../partials/boostrap-js') %> 
+</body>
+</html>
